@@ -12,13 +12,10 @@ import java.util.ArrayList;
 public class Game {
 
     private int delay;
-
     private Field field;
-
+    private boolean endGame;
     private Player player;
-
     private ArrayList<Enemy> enemies;
-
     private Collision collision;
 
     public Game() {
@@ -26,18 +23,14 @@ public class Game {
         // Set game delay
         // This is related to game loop rounds
         this.delay = 1;
-
         // Load our game field
         this.field = new Field("resources/images/fields/field_one.png");
-
         // Initiate enemies container
         this.enemies = new ArrayList<>();
-
         this.collision = new Collision();
     }
 
     public void init() {
-
         // Create new player in the field
          this.player = PlayerFactory.getNewPlayer(field);
 
@@ -46,7 +39,6 @@ public class Game {
 
         // Initiate listeners for keyboard press
         new KeyboardEngine(this, player);
-
     }
 
     public void start() throws InterruptedException  {
@@ -56,11 +48,19 @@ public class Game {
 
         // Goes on until enemy gets to the last column
         // TODO: Condition for while no enemy is at the wall
-        while(true) {
-
+        while(!endGame) {
+            setGame();
 
             if (player.getWeapon().isFired()){
                 player.getWeapon().move(field);
+                /*enemies.iterator();
+                for(Enemy enemy : enemies) {
+                    //if(player.getWeapon().getPosition().compare(enemy.getPosition())) {
+                    if(player.getWeapon().getPosition().getY() == enemy.getPosition().getY() &&
+                    player.getWeapon().getPosition().getX() == enemy.getPosition().getX()) {
+                        enemy.hit();
+                    }
+                }*/
             }
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies
@@ -88,15 +88,31 @@ public class Game {
                 moveTimer = 0;
             }
             moveTimer++;
-
         }
+        //POR A IMAGEM GAME OVER!!!!!!!!!!!!!!!
     }
 
     public boolean gomeOver(){
         return false;
     }
+
     public Field getField(){
         return field;
+    }
+
+    public void setGame(){
+
+        enemies.iterator();
+        for(Enemy enemy : enemies) {
+            //if enemy reaches edge
+            if(enemy.atEdge()) {
+                this.endGame = true;
+            }
+            //if enemy touch player
+            if(enemy.getPosition().compare(player.getPosition())) {
+                this.endGame = true;
+            }
+        }
     }
 
     public Player getPlayer() {

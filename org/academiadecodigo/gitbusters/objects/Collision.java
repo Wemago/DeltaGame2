@@ -9,6 +9,7 @@ public class Collision {
 
     private boolean hasCollided;
 
+    /*
     //if enemy gets to edge
     public boolean hasReachedEdge(Enemy enemy, Field field) {
         if (enemy.getPosition().getX() == field.getX() + Field.PADDING) {
@@ -16,15 +17,14 @@ public class Collision {
         }
         return false;
     }
+    */
 
-    //if enemy gets to player
+    //if enemy touch player
     public void hasReachedPlayer(Enemy enemy, Player player) {
         if (enemy.getPosition().getX() == player.getPosition().getX()) {
             hasCollided = true;
         }
     }
-
-    //if enemy touch player
 
     /*public boolean getHasCollided() {
         return hasCollided;

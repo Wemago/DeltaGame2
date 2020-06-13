@@ -8,12 +8,15 @@ import org.academiadecodigo.gitbusters.objects.Moveable;
 import org.academiadecodigo.gitbusters.engine.Direction;
 import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 
+import java.util.ArrayList;
+
 public abstract class Weapon extends GameObject implements Moveable {
 
     private boolean fired;
     private Position position;
     private Direction direction;
     private int speed;
+    private ArrayList<Enemy> enemies;
 
     //private int bulletDamage;
 
@@ -51,13 +54,15 @@ public abstract class Weapon extends GameObject implements Moveable {
         return direction;
     }
 
+    /*
     // if bullet hits enemy
-    public boolean hasHitEnemy(Enemy enemy, Weapon bullet) {
+    public boolean hasHitEnemy() {
+
         if (enemy.getPosition().getX() == bullet.getPosition().getX()) {
             return true;
         }
         return false;
-    }
+    }*/
 
     // if hits wall
     public boolean hasHitWall(Field field) {
@@ -72,12 +77,6 @@ public abstract class Weapon extends GameObject implements Moveable {
         switch (this.direction) {
             case UP:
                 position.moveUp(speed);
-                /*if(this.position.getY() == position.getMaxY() - Field.PADDING){
-                    this.setFired(false);
-                }*/
-                //if(position.compare())
-                //System.out.println(position.getY());
-                //System.out.println(field.getMaxY());
                 if(this.position.getY() == field.getY()) {
                     this.setFired(false);
                     position.hide();
@@ -85,9 +84,6 @@ public abstract class Weapon extends GameObject implements Moveable {
                 break;
             case DOWN:
                 position.moveDown(speed);
-                //System.out.println(field.getHeight());
-                //System.out.println(field.getMaxY());
-                //System.out.println(position.getY());
                 if(this.position.getMaxY() == field.getMaxY()) {
                     this.setFired(false);
                     position.hide();

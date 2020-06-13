@@ -94,7 +94,6 @@ public class KeyboardEngine implements KeyboardHandler {
 
                 if (object instanceof Player) {
                     ((Player) object).createWeapon();
-                    System.out.println("pew");
                     ((Player) object).getWeapon().setFired(true);
 
                 }
