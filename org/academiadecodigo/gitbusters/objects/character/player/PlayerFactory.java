@@ -2,6 +2,7 @@ package org.academiadecodigo.gitbusters.objects.character.player;
 
 import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
+import org.academiadecodigo.gitbusters.objects.weapons.Minigun;
 
 public class PlayerFactory {
 
@@ -9,7 +10,6 @@ public class PlayerFactory {
 
         int random = (int) (Math.random() * PlayerType.values().length);
         PlayerType playerType = PlayerType.values()[random];
-
         Player player;
         int padding = 17;
 
@@ -21,7 +21,9 @@ public class PlayerFactory {
                                 field.getHeight() / 2,
                                 field,
                                 "resources/images/characters/players/monica.png"),
-                        2
+                        2,
+                        field
+
                 );
                 break;
             case TT:
@@ -31,7 +33,9 @@ public class PlayerFactory {
                                 field.getHeight() / 2,
                                 field,
                                 "resources/images/characters/players/tiago.png"),
-                        3
+                        3,
+                        field
+
                 );
                 break;
             case RICKY:
@@ -41,7 +45,10 @@ public class PlayerFactory {
                                 field.getHeight() / 2,
                                 field,
                                 "resources/images/characters/players/ricardo.png"),
-                        2);
+                        2,
+                        field
+
+                );
                 break;
             case CAPTAIN:
                 player = new Player( PlayerType.CAPTAIN,
@@ -50,7 +57,9 @@ public class PlayerFactory {
                                 field.getHeight() / 2,
                                 field,
                                 "resources/images/characters/players/philip.png"),
-                        2
+                        2,
+                        field
+
                 );
                 break;
             case NEMYBOY:
@@ -60,7 +69,9 @@ public class PlayerFactory {
                                 field.getHeight() / 2,
                                 field,
                                 "resources/images/characters/players/flavio.png"),
-                        2
+                        2,
+                        field
+
                 );
                 break;
             default:

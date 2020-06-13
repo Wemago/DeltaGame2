@@ -1,5 +1,7 @@
 package org.academiadecodigo.gitbusters.objects.weapons;
 
+import org.academiadecodigo.gitbusters.engine.Direction;
+import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.GameObject;
 import org.academiadecodigo.gitbusters.objects.Moveable;
@@ -11,43 +13,49 @@ public class Weapon extends GameObject implements Moveable {
     private Position position;
     private Direction direction;
     private int speed;
+
     //private int bulletDamage;
 
 
-    public Weapon(Position position, Direction direction, int speed) {
+    public Weapon(Position pos, Direction direction, int speed, String path, Field field) {
 
-        this.position = position;
+        this.position = new Position(pos.getX(),pos.getY(),field,path);
+
         this.direction = direction;
+        System.out.println(this.direction);
         this.speed = speed;
     }
 
     public void setFired(boolean fired) {
 
-        if (!fired) {
+        /*if (!fired) {
             this.fired = false;
             this.position.hide();
             return;
+        }*/
+
+        this.fired = fired;
+        if (fired){
+            this.position.show();
         }
 
-        this.fired = true;
-        this.position.show();
     }
 
     public boolean isFired() {
         return fired;
     }
 
-    /*
+
     public Direction getDirection() {
         return direction;
     }
-    */
 
-    /*
+
+
     @Override
     public void move() {
-
-        switch (direction) {
+        System.out.println("direction");
+        switch (this.direction) {
             case UP:
                 position.moveUp(speed);
                 break;
@@ -63,7 +71,7 @@ public class Weapon extends GameObject implements Moveable {
         }
 
     }
-     */
+
 
     @Override
     public String getMessage() {
@@ -96,10 +104,7 @@ public class Weapon extends GameObject implements Moveable {
         return false;
     }
 
-    @Override
-    public void move() {
 
-    }
 
     // depois metemos um construtor e tal...
 

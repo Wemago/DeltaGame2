@@ -4,6 +4,7 @@ import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 import org.academiadecodigo.gitbusters.objects.character.enemy.EnemyFactory;
 import org.academiadecodigo.gitbusters.objects.character.player.Player;
 import org.academiadecodigo.gitbusters.objects.character.player.PlayerFactory;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.ArrayList;
 
@@ -33,16 +34,17 @@ public class Game {
     public void init() {
 
         // Create new player in the field
-        Player player = PlayerFactory.getNewPlayer(field);
+         this.player = PlayerFactory.getNewPlayer(field);
 
         // Draw player character
         player.getPosition().show();
 
         // Initiate listeners for keyboard press
         new KeyboardEngine(this, player);
+
     }
 
-    public void start() throws InterruptedException {
+    public void start() throws InterruptedException  {
 
         int creationTimer = 0;
         int moveTimer = 0;
@@ -51,6 +53,11 @@ public class Game {
         // TODO: Condition for wwile no enemy is at the wall
         while(true) {
 
+
+            if (player.getWeapon().isFired()){
+                System.out.println("aaaaaa");
+                player.getWeapon().move();
+            }
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies
             if(creationTimer == 625) {
@@ -83,6 +90,9 @@ public class Game {
 
     public boolean gomeOver(){
         return false;
+    }
+    public Field getField(){
+        return field;
     }
 
     public Player getPlayer() {

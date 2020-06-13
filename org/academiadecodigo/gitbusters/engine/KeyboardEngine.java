@@ -1,6 +1,8 @@
 package org.academiadecodigo.gitbusters.engine;
 
 import org.academiadecodigo.gitbusters.objects.GameObject;
+import org.academiadecodigo.gitbusters.objects.character.player.Player;
+import org.academiadecodigo.gitbusters.objects.weapons.Weapon;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -10,11 +12,10 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 public class KeyboardEngine implements KeyboardHandler {
 
     private Keyboard keyboard;
-
     private Game game;
     private GameObject object;
 
-    public KeyboardEngine(Game game, GameObject object){
+    public KeyboardEngine(Game game, GameObject object) {
 
         this.game = game;
         this.object = object;
@@ -45,30 +46,58 @@ public class KeyboardEngine implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 // Make object move by speed based on is current position
-                object.getPosition().moveUp(object.getSpeed());
+                if (object instanceof Player) {
+                    object.getPosition().moveUp(object.getSpeed());
+                    ((Player) object).setCurrentDirection(Direction.UP);
+                }
+
                 break;
             case KeyboardEvent.KEY_DOWN:
                 // Make object move by speed based on is current position
-                object.getPosition().moveDown(object.getSpeed());
+                if (object instanceof Player) {
+                    object.getPosition().moveDown(object.getSpeed());
+                    ((Player) object).setCurrentDirection(Direction.DOWN);
+
+                }
+
                 break;
             case KeyboardEvent.KEY_LEFT:
                 // Make object move by speed based on is current position
-                object.getPosition().moveLeft(object.getSpeed());
+                if (object instanceof Player) {
+                    object.getPosition().moveLeft(object.getSpeed());
+                    ((Player) object).setCurrentDirection(Direction.LEFT);
+                }
+
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 // Make object move by speed based on is current position
-                object.getPosition().moveRight(object.getSpeed());
+                if (object instanceof Player) {
+                    object.getPosition().moveRight(object.getSpeed());
+                    ((Player) object).setCurrentDirection(Direction.RIGHT);
+                }
                 break;
             case KeyboardEvent.KEY_A:
                 // Increase speed
-                object.increaseSpeed();
+                if (object instanceof Player) {
+                    object.increaseSpeed();
+                }
                 break;
             case KeyboardEvent.KEY_Z:
                 // Decrease speed
-                object.decreaseSpeed();
+                if (object instanceof Player) {
+                    object.decreaseSpeed();
+                }
+
                 break;
             case KeyboardEvent.KEY_SPACE:
                 // Launch something?
+
+                if (object instanceof Player) {
+                    ((Player) object).createWeapon();
+                    System.out.println("pew");
+                    ((Player) object).getWeapon().setFired(true);
+
+                }
                 // FIRE
                 break;
             default:
@@ -77,6 +106,8 @@ public class KeyboardEngine implements KeyboardHandler {
     }
 
     public void keyReleased(KeyboardEvent keyboardEvent) {
+
+
 
     }
 }

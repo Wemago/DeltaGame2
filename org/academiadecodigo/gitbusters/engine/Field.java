@@ -38,6 +38,7 @@ public class Field {
         return field.getMaxY();
     }
 
+
     public boolean isEdge() {
         return (getX() == 0 || getX() == (getHeight() - 1)) || (getY() == 0 || getY() == (getWidth() - 1));
     }
