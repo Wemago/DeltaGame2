@@ -56,7 +56,7 @@ public class Game {
 
         // Goes on until enemy gets to the last column
         // TODO: Condition for while no enemy is at the wall
-        while(!collision.hasReachedEdge()) {
+        while(true) {
 
 
             if (player.getWeapon().isFired()){

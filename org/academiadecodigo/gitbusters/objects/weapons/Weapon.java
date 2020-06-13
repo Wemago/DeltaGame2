@@ -14,13 +14,16 @@ public abstract class Weapon extends GameObject implements Moveable {
     private Position position;
     private Direction direction;
     private int speed;
+
     //private int bulletDamage;
 
 
     public Weapon(Position pos, Direction direction, int speed, String path, Field field) {
 
         this.position = new Position(pos.getX(),pos.getY(),field,path);
+
         this.direction = direction;
+        System.out.println(this.direction);
         this.speed = speed;
     }
 
@@ -36,6 +39,7 @@ public abstract class Weapon extends GameObject implements Moveable {
         if (fired){
             this.position.show();
         }
+
     }
 
     public boolean isFired() {
@@ -70,20 +74,38 @@ public abstract class Weapon extends GameObject implements Moveable {
                 position.moveUp(speed);
                 /*if(this.position.getY() == position.getMaxY() - Field.PADDING){
                     this.setFired(false);
-                }
-                //if(position.compare())
-                /*if(getPosition().getMaxY() == field.getMaxY() - Field.PADDING) {
-                    this.position.hide();
                 }*/
+                //if(position.compare())
+                //System.out.println(position.getY());
+                //System.out.println(field.getMaxY());
+                if(this.position.getY() == field.getY()) {
+                    this.setFired(false);
+                    position.hide();
+                }
                 break;
             case DOWN:
                 position.moveDown(speed);
+                //System.out.println(field.getHeight());
+                //System.out.println(field.getMaxY());
+                //System.out.println(position.getY());
+                if(this.position.getMaxY() == field.getMaxY()) {
+                    this.setFired(false);
+                    position.hide();
+                }
                 break;
             case LEFT:
                 position.moveLeft(speed);
+                if(this.position.getX() == field.getX()) {
+                    this.setFired(false);
+                    position.hide();
+                }
                 break;
             case RIGHT:
                 position.moveRight(speed);
+                if(this.position.getMaxX() == field.getMaxX()) {
+                    this.setFired(false);
+                    position.hide();
+                }
                 break;
         }
 
