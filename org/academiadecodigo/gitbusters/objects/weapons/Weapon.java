@@ -3,23 +3,23 @@ package org.academiadecodigo.gitbusters.objects.weapons;
 import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.GameObject;
 import org.academiadecodigo.gitbusters.objects.Moveable;
+import org.academiadecodigo.gitbusters.engine.Direction;
 
 public class Weapon extends GameObject implements Moveable {
 
     private boolean fired;
     private Position position;
-    //private Direction direction;
+    private Direction direction;
     private int speed;
     //private int bulletDamage;
 
-    /*
+
     public Weapon(Position position, Direction direction, int speed) {
 
         this.position = position;
         this.direction = direction;
         this.speed = speed;
     }
-     */
 
     public void setFired(boolean fired) {
 
@@ -86,14 +86,10 @@ public class Weapon extends GameObject implements Moveable {
     }
 
     @Override
-    public void increaseSpeed() {
-
-    }
+    public void increaseSpeed() {}
 
     @Override
-    public void decreaseSpeed() {
-
-    }
+    public void decreaseSpeed() {}
 
     @Override
     public boolean atEdge() {
