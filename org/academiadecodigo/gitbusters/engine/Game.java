@@ -4,6 +4,7 @@ import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 import org.academiadecodigo.gitbusters.objects.character.enemy.EnemyFactory;
 import org.academiadecodigo.gitbusters.objects.character.player.Player;
 import org.academiadecodigo.gitbusters.objects.character.player.PlayerFactory;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.ArrayList;
 
@@ -50,7 +51,9 @@ public class Game {
         // Goes on until enemy gets to the last column
         // TODO: Condition for wwile no enemy is at the wall
         while(true) {
-
+            if (player.getWeapon().isFired()){
+                player.getWeapon().move();
+            }
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies
             if(creationTimer == 625) {
@@ -83,6 +86,9 @@ public class Game {
 
     public boolean gomeOver(){
         return false;
+    }
+    public Field getField(){
+        return field;
     }
 
     public Player getPlayer() {

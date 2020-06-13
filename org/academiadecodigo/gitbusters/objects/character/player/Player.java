@@ -1,30 +1,46 @@
 package org.academiadecodigo.gitbusters.objects.character.player;
 
 import org.academiadecodigo.gitbusters.engine.Direction;
+import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.Moveable;
 import org.academiadecodigo.gitbusters.objects.character.Character;
+import org.academiadecodigo.gitbusters.objects.weapons.Minigun;
 import org.academiadecodigo.gitbusters.objects.weapons.Weapon;
 
 public class Player extends Character implements Moveable {
 
     private PlayerType type;
     private Weapon weapon;
-
     private Position position;
+    private Direction currentDirection;
+    private Field field;
+
 
     private int speed;
     private int maxSpeed;
 
-    public Player(PlayerType type, Position position, int speed) {
+    public Player(PlayerType type, Position position, int speed, Field field) {
         this.type = type;
         this.position = position;
         this.speed = speed;
         this.maxSpeed = speed;
+        this.weapon = new Minigun(position,getCurrentDirection(),field);
+        this.field = field;
     }
 
+    public Weapon getWeapon(){
+        return weapon;
+    }
     public void move() {
 
+    }
+
+    public void setCurrentDirection(Direction currentDirection) {
+        this.currentDirection = currentDirection;
+    }
+    public Direction getCurrentDirection(){
+        return currentDirection;
     }
 
     public void accelerate(Direction direction, int speed) {
