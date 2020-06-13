@@ -1,7 +1,7 @@
 package org.academiadecodigo.gitbusters.objects.character.enemy;
 
-import org.academiadecodigo.gitbusters.Field;
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Field;
+import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.Utils;
 
 public class EnemyFactory {

@@ -1,6 +1,6 @@
 package org.academiadecodigo.gitbusters.objects.weapons;
 
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.GameObject;
 import org.academiadecodigo.gitbusters.objects.Moveable;
 

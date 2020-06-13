@@ -1,6 +1,6 @@
 package org.academiadecodigo.gitbusters.objects.character;
 
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.GameObject;
 
 abstract public class Character extends GameObject {

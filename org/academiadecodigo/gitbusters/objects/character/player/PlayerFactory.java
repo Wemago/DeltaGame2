@@ -1,7 +1,7 @@
 package org.academiadecodigo.gitbusters.objects.character.player;
 
-import org.academiadecodigo.gitbusters.Field;
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Field;
+import org.academiadecodigo.gitbusters.engine.Position;
 
 public class PlayerFactory {
 

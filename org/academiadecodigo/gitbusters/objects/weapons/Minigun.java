@@ -1,6 +1,6 @@
 package org.academiadecodigo.gitbusters.objects.weapons;
 
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Position;
 
 public class Minigun {
 

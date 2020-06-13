@@ -9,21 +9,32 @@ How to represent<br />
 #number - Functionality Name - Description - Coder Name
 
 == TODO
-1. Game - Definition of positions, random creation - DeltaTeam
-3. Game Init - Creation of objects - DeltaTeam
-4. Game Start - Start movements - DeltaTeam
-
+1. Menu - Merge to branch -DeltaTeam
+2. Keyboard - Add diagonal movement - DeltaTeam
+3. Extra Feature - Add limit to player max speed base by level - DeltaTeam
+4. Extra Feature - Player max speed bonus for over limit speed - DeltaTeam
+5. Score Board - Implement score board for player - DeltaTeam
+6. Collision - If zombie hits player character, the player dies - DeltaTeam
+7. Collision - Zombie hits the wall its game over - DeltaTeam
+8. Collision - Player shoots enemy dies, take him out ot the screen - DeltaTeam
+ 
 == DOING
-1. Game Objects - Factories, Types - Flavio, Tiago
-2. Game Logic - Start, Init, object creation - Andre
-3. Game Init - Creation of grid, creation of players - Andre
-4. KeyboardEngine Logic - Missing speed increase/decrease, shooting - Andre, Ricardo
-5. Player Logic - Added some main abstract methods - Flavio
-6. Enemy Logic - Added some main abstract methods - Flavio
-7. Graphics - Defining graphics for game - Monica
-8. Menu - Programming and Menu - Ricardo, Tiago
-9. Graphics - Adapting and editing graphics - Tiago, Monica
+1. KeyboardEngine Logic - Missing speed increase/decrease (done), shooting - Andre, Ricardo
+2. Menu - Programming and Menu - Ricardo, Tiago
+3. Presentation - Plan and develop presentation for sale of game - Ricardo, Flavio
+4. Code Cleaning - Clean code, remove deprecated folders and files, add comments to methods - DeltaTeam
+5. Collision - Adding helpers methods and logic - Ricardo, Flavio, Tiago
 
 == DONE
 1. Game map Creation - Map grid was created and executed - Andre
 2. File Structure - Directory and file organization - DeltaTeam
+3. Game Objects - Factories, Types - Flavio, Tiago
+4. Game Logic - Start, Init, object creation - Andre
+5. Game Init - Creation of grid, creation of players - Andre
+6. Player Logic - Added some main abstract methods - Flavio
+7. Enemy Logic - Added some main abstract methods - Flavio
+8. Graphics - Defining graphics for game - Monica
+9. Graphics - Adapting and editing graphics - Tiago, Monica
+10. Game Start - Start movements - Andre
+11. Game - Definition of positions, random creation - Andre
+12. Game Init - Creation of objects - DeltaTeam

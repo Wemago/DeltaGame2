@@ -1,7 +1,7 @@
 package org.academiadecodigo.gitbusters.objects.character.player;
 
-import org.academiadecodigo.gitbusters.Direction;
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Direction;
+import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.Moveable;
 import org.academiadecodigo.gitbusters.objects.character.Character;
 import org.academiadecodigo.gitbusters.objects.weapons.Weapon;

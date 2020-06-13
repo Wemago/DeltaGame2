@@ -1,6 +1,6 @@
 package org.academiadecodigo.gitbusters.objects.decor;
 
-import org.academiadecodigo.gitbusters.Position;
+import org.academiadecodigo.gitbusters.engine.Position;
 
 public class Tree extends Decor {
 
