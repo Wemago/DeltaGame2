@@ -34,16 +34,17 @@ public class Game {
     public void init() {
 
         // Create new player in the field
-        Player player = PlayerFactory.getNewPlayer(field);
+         this.player = PlayerFactory.getNewPlayer(field);
 
         // Draw player character
         player.getPosition().show();
 
         // Initiate listeners for keyboard press
         new KeyboardEngine(this, player);
+
     }
 
-    public void start() throws InterruptedException {
+    public void start() throws InterruptedException  {
 
         int creationTimer = 0;
         int moveTimer = 0;
@@ -51,7 +52,10 @@ public class Game {
         // Goes on until enemy gets to the last column
         // TODO: Condition for wwile no enemy is at the wall
         while(true) {
+
+
             if (player.getWeapon().isFired()){
+                System.out.println("aaaaaa");
                 player.getWeapon().move();
             }
             // Create an enemy and add to the enemies container

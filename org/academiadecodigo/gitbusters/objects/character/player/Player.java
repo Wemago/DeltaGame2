@@ -25,12 +25,20 @@ public class Player extends Character implements Moveable {
         this.position = position;
         this.speed = speed;
         this.maxSpeed = speed;
+        this.currentDirection = Direction.RIGHT;
         this.weapon = new Minigun(position,getCurrentDirection(),field);
+
+
+
         this.field = field;
     }
 
+    public void createWeapon(){
+        this.weapon = new Minigun(position,getCurrentDirection(),field);
+    }
+
     public Weapon getWeapon(){
-        return weapon;
+        return this.weapon;
     }
     public void move() {
 

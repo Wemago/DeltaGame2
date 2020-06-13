@@ -91,9 +91,12 @@ public class KeyboardEngine implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_SPACE:
                 // Launch something?
-                if (object instanceof Weapon) {
-                    System.out.println("aaaaaaaaaaa");
-                    ((Weapon) object).setFired(true);
+
+                if (object instanceof Player) {
+                    ((Player) object).createWeapon();
+                    System.out.println("pew");
+                    ((Player) object).getWeapon().setFired(true);
+
                 }
                 // FIRE
                 break;
@@ -103,6 +106,8 @@ public class KeyboardEngine implements KeyboardHandler {
     }
 
     public void keyReleased(KeyboardEvent keyboardEvent) {
+
+
 
     }
 }

@@ -16,11 +16,12 @@ public class Weapon extends GameObject implements Moveable {
     //private int bulletDamage;
 
 
-    public Weapon(Position position, Direction direction, int speed, String path, Field field) {
+    public Weapon(Position pos, Direction direction, int speed, String path, Field field) {
 
-        this.position = new Position(position.getX(),position.getY(),field,path);
+        this.position = new Position(pos.getX(),pos.getY(),field,path);
 
         this.direction = direction;
+        System.out.println(this.direction);
         this.speed = speed;
     }
 
@@ -53,7 +54,7 @@ public class Weapon extends GameObject implements Moveable {
 
     @Override
     public void move() {
-        System.out.println(direction);
+        System.out.println("direction");
         switch (this.direction) {
             case UP:
                 position.moveUp(speed);
