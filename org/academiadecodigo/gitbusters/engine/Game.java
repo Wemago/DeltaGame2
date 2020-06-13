@@ -1,5 +1,6 @@
 package org.academiadecodigo.gitbusters.engine;
 
+import org.academiadecodigo.gitbusters.objects.Collision;
 import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 import org.academiadecodigo.gitbusters.objects.character.enemy.EnemyFactory;
 import org.academiadecodigo.gitbusters.objects.character.player.Player;
@@ -18,6 +19,8 @@ public class Game {
 
     private ArrayList<Enemy> enemies;
 
+    private Collision collision;
+
     public Game() {
 
         // Set game delay
@@ -29,6 +32,8 @@ public class Game {
 
         // Initiate enemies container
         this.enemies = new ArrayList<>();
+
+        this.collision = new Collision();
     }
 
     public void init() {
@@ -50,13 +55,12 @@ public class Game {
         int moveTimer = 0;
 
         // Goes on until enemy gets to the last column
-        // TODO: Condition for wwile no enemy is at the wall
-        while(true) {
+        // TODO: Condition for while no enemy is at the wall
+        while(!collision.hasReachedEdge()) {
 
 
             if (player.getWeapon().isFired()){
-                System.out.println("aaaaaa");
-                player.getWeapon().move();
+                player.getWeapon().move(field);
             }
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies

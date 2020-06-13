@@ -6,23 +6,21 @@ import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.GameObject;
 import org.academiadecodigo.gitbusters.objects.Moveable;
 import org.academiadecodigo.gitbusters.engine.Direction;
+import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 
-public class Weapon extends GameObject implements Moveable {
+public abstract class Weapon extends GameObject implements Moveable {
 
     private boolean fired;
     private Position position;
     private Direction direction;
     private int speed;
-
     //private int bulletDamage;
 
 
     public Weapon(Position pos, Direction direction, int speed, String path, Field field) {
 
         this.position = new Position(pos.getX(),pos.getY(),field,path);
-
         this.direction = direction;
-        System.out.println(this.direction);
         this.speed = speed;
     }
 
@@ -38,7 +36,6 @@ public class Weapon extends GameObject implements Moveable {
         if (fired){
             this.position.show();
         }
-
     }
 
     public boolean isFired() {
@@ -50,14 +47,34 @@ public class Weapon extends GameObject implements Moveable {
         return direction;
     }
 
+    // if bullet hits enemy
+    public boolean hasHitEnemy(Enemy enemy, Weapon bullet) {
+        if (enemy.getPosition().getX() == bullet.getPosition().getX()) {
+            return true;
+        }
+        return false;
+    }
 
+    // if hits wall
+    public boolean hasHitWall(Field field) {
+        if(this.getPosition().getMaxX() == field.getWidth() - Field.PADDING) {
+            return true;
+        }
+        return false;
+    }
 
-    @Override
-    public void move() {
+    public void move(Field field) {
         System.out.println("direction");
         switch (this.direction) {
             case UP:
                 position.moveUp(speed);
+                /*if(this.position.getY() == position.getMaxY() - Field.PADDING){
+                    this.setFired(false);
+                }
+                //if(position.compare())
+                /*if(getPosition().getMaxY() == field.getMaxY() - Field.PADDING) {
+                    this.position.hide();
+                }*/
                 break;
             case DOWN:
                 position.moveDown(speed);
@@ -80,7 +97,7 @@ public class Weapon extends GameObject implements Moveable {
 
     @Override
     public Position getPosition() {
-        return null;
+        return this.position;
     }
 
     @Override
@@ -99,8 +116,10 @@ public class Weapon extends GameObject implements Moveable {
     @Override
     public void decreaseSpeed() {}
 
-    @Override
-    public boolean atEdge() {
+    public boolean atEdge(Field field) {
+        if(field.isEdge()) {
+            return true;
+        }
         return false;
     }
 
