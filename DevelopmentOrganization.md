@@ -9,23 +9,15 @@ How to represent<br />
 #number - Functionality Name - Description - Coder Name
 
 == TODO
-1. Menu - Merge to branch -DeltaTeam
+1. Menu - Merge to branch - DeltaTeam
 2. Keyboard - Add diagonal movement - DeltaTeam
 3. Extra Feature - Add limit to player max speed base by level - DeltaTeam
 4. Extra Feature - Player max speed bonus for over limit speed - DeltaTeam
 5. Score Board - Implement score board for player - DeltaTeam
-
  
 == DOING
-1. KeyboardEngine Logic - Missing speed increase/decrease (done), shooting - Andre, Ricardo
 2. Menu - Programming and Menu - Ricardo, Tiago
 4. Code Cleaning - Clean code, remove deprecated folders and files, add comments to methods - DeltaTeam
-5. Collision - Adding helpers methods and logic - Ricardo, Flavio, Tiago, Mónica.
-6. Collision - Player shoots enemy dies, take him out ot the screen - Ricardo, Tiago, Flávio, Mónica.
-7. Collision - If zombie hits player character, the player dies - Tiago, Mónica, Flávio, Ricardo.(left to do: cut the square around the player)
-8. Collision - Zombie hits the wall its game over - Tiago, Ricardo, Flavio, Mónica. (left to do: join the "game over image")
-
-
 
 == DONE
 1. Game map Creation - Map grid was created and executed - Andre
@@ -40,4 +32,9 @@ How to represent<br />
 10. Game Start - Start movements - Andre
 11. Game - Definition of positions, random creation - Andre
 12. Game Init - Creation of objects - DeltaTeam
-13.Presentation - Plan and develop presentation for sale of game - Ricardo, Flavio
+13. Presentation - Plan and develop presentation for sale of game - Ricardo, Flavio
+14. Collision - Adding helpers methods and logic - DeltaTeam
+15. Collision - Player shoots enemy dies, take him out ot the screen - DeltaTeam
+16. Collision - If zombie hits player character, the player dies - DeltaTeam
+17. Collision - Zombie hits the wall its game over - DeltaTeam
+18. KeyboardEngine Logic - Missing speed increase/decrease, shooting - Andre, Ricardo
