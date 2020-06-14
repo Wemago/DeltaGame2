@@ -16,8 +16,8 @@ How to represent<br />
 5. Score Board - Implement score board for player - DeltaTeam
  
 == DOING
-2. Menu - Programming and Menu - Ricardo, Tiago
-4. Code Cleaning - Clean code, remove deprecated folders and files, add comments to methods - DeltaTeam
+1. Menu - Programming and Menu - Ricardo, Tiago
+2. Code Cleaning - Clean code, remove deprecated folders and files, add comments to methods - DeltaTeam
 
 == DONE
 1. Game map Creation - Map grid was created and executed - Andre
