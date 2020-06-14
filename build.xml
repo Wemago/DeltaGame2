@@ -1,0 +1,36 @@
+<project name="DeltaGame2">
+    <target name="init">
+        <property name="project.name" value="DeltaGame2"/>
+        <property name="src.dir" value="src"/>
+        <property name="build.dir" value="build"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+        <property name="libs.dir" value="libs"/>
+        <property name="main.class" value="org.academiadecodigo.gitbusters.Main"/>
+        <property name="resources.dir" value="resources"/>
+        <path id="classpath">
+            <fileset dir="${libs.dir}" includes="**/*.jar"/>
+        </path>
+    </target>
+    <target name="prepare" description="Creates build and classes directories" depends="init">
+        <mkdir dir="${classes.dir}"/>
+    </target>
+    <target name="compile" description="Compiles all java files from this project" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+    <target name="jarfile" description="Created our executable file" depends="compile">
+        <jar basedir="${classes.dir}" destfile="${build.dir}/${project.name}.jar">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+            <zipgroupfileset dir="${libs.dir}" includes="*.jar"/>
+            <fileset dir=".">
+                <include name="**/${resources.dir}/**" />
+            </fileset>
+        </jar>
+    </target>
+    <target name="clean" description="Clean up project" depends="init">
+        <delete dir="${build.dir}"/>
+    </target>
+</project>
