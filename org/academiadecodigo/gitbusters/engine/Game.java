@@ -1,24 +1,23 @@
 package org.academiadecodigo.gitbusters.engine;
 
-import org.academiadecodigo.gitbusters.objects.Collision;
 import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 import org.academiadecodigo.gitbusters.objects.character.enemy.EnemyFactory;
 import org.academiadecodigo.gitbusters.objects.character.player.Player;
 import org.academiadecodigo.gitbusters.objects.character.player.PlayerFactory;
 import org.academiadecodigo.gitbusters.objects.weapons.Weapon;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Game {
 
     private int delay;
-    private Field field;
     private boolean endGame;
+
+    private Field field;
     private Player player;
     private ArrayList<Enemy> enemies;
-    private Collision collision;
 
     public Game() {
 
@@ -31,7 +30,6 @@ public class Game {
 
         // Initiate enemies container
         this.enemies = new ArrayList<>();
-        this.collision = new Collision();
     }
 
     public void init() {
@@ -49,9 +47,15 @@ public class Game {
 
         int creationTimer = 0;
         int moveTimer = 0;
+        int score = 0;
+
+        String textScore = "Your Score: "+score;
+        Text textShow = new Text((Math.round(field.getWidth()/2)), Field.PADDING*3, textScore);
+        textShow.grow(Field.PADDING*6, Field.PADDING*2);
+        textShow.setColor(Color.WHITE);
+        textShow.draw();
 
         // Goes on until enemy gets to the last column
-        // TODO: Condition for while no enemy is at the wall
         while(!endGame) {
 
             setGame();
@@ -62,13 +66,6 @@ public class Game {
 
                 weapon.move(field);
 
-                /*
-                if(weapon.getPosition().getY() == field.getY()) {
-                    weapon.getPosition().hide();
-                    weapons.remove(weapon);
-                }
-                */
-
                 for(Enemy enemy : new ArrayList<>(enemies)) {
 
                     if(enemy.getPosition().compare(weapon.getPosition())) {
@@ -76,14 +73,16 @@ public class Game {
                         enemies.remove(enemy);
                         weapon.getPosition().hide();
                         weapons.remove(weapon);
+                        score++;
                     }
                 }
             }
 
+            textShow.setText("Your score: "+score);
 
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies
-            if(creationTimer == 625) {
+            if(creationTimer == 350) {
                 // Create new enemy at field
                 Enemy enemy = EnemyFactory.getNewEnemy(field);
                 // Draw enemy in its position

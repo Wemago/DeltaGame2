@@ -3,10 +3,9 @@ package org.academiadecodigo.gitbusters.objects.character.player;
 import org.academiadecodigo.gitbusters.engine.Direction;
 import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
+import org.academiadecodigo.gitbusters.engine.Sound;
 import org.academiadecodigo.gitbusters.objects.Moveable;
 import org.academiadecodigo.gitbusters.objects.character.Character;
-import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
-import org.academiadecodigo.gitbusters.objects.character.enemy.EnemyFactory;
 import org.academiadecodigo.gitbusters.objects.weapons.Minigun;
 import org.academiadecodigo.gitbusters.objects.weapons.Weapon;
 
@@ -41,11 +40,12 @@ public class Player extends Character implements Moveable {
         Minigun minigun = new Minigun(position,getCurrentDirection(),field);
         minigun.getPosition().show();
         weapons.add(minigun);
+
+        Sound shoot = new Sound("resources/sounds/sfx_shoot.wav");
+        shoot.play(true);
     }
 
-    public static void removeWeapon() {
-
-    }
+    public static void removeWeapon() { }
 
     public ArrayList<Weapon> getWeapons(){
         return this.weapons;
@@ -60,39 +60,10 @@ public class Player extends Character implements Moveable {
         return currentDirection;
     }
 
-    public void accelerate(Direction direction, int speed) {
-
-        //GridDirection newDirection = direction;
-
-        //turns back if bumped against wall
-        //if (isHittingWall()) {
-        //    return;
-        //}
-
-        //accelerate in the chosen direction
-        //this.currentDirection = newDirection;
-        //for (int i = 0; i < speed; i++) {
-            //getPos().moveInDirection(newDirection, 1);
-        //    break;
-        //}
-    }
+    public void accelerate(Direction direction, int speed) { }
 
         /*
-    public boolean isHittingWall() {
-        switch (currentDirection) {
-            case UP:
-                if (getPos().getRow() == 0) {
-                    return true;
-                }
-                break;
-            case DOWN:
-                if (getPos().getRow() == getGrid().getRows() - 1) {
-                    return true;
-                }
-        }
-
-        return false;
-    }
+    public boolean isHittingWall() { }
          */
 
     public Position getPosition() {
