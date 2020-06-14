@@ -29,37 +29,47 @@ public class Game {
         // Initiate enemies container
         this.enemies = new ArrayList<>();
 
-        // Initiate Keyboard
-        new KeyboardEngine();
+
     }
 
+    public void init() {
+
+        // Initiate listeners for keyboard press
+        new KeyboardEngine(this);
+    }
 
     public void start() throws InterruptedException {
 
+        boolean state = false;
         int creationTimer = 0;
         int moveTimer = 0;
         int score = 0;
 
-        // Load our game field
-        this.field = new Field("resources/images/fields/field_one.png");
-
-        // Create new player in the field
-        this.player = PlayerFactory.getNewPlayer(field);
-
-        // Draw player character
-        player.getPosition().show();
-
-        // Initiate listeners for keyboard press
-        new KeyboardEngine(this, player);
-
-        String textScore = "Your Score: " + score;
+        /*String textScore = "Your score: " + score;
         Text textShow = new Text((Math.round(field.getWidth() / 2)), Field.PADDING * 3, textScore);
         textShow.grow(Field.PADDING * 6, Field.PADDING * 2);
         textShow.setColor(Color.WHITE);
-        textShow.draw();
+        textShow.draw(); */
+
 
         // Goes on until enemy gets to the last column
         while (!endGame) {
+
+            if (!state) {
+
+                // Load our game field
+                this.field = new Field("resources/images/fields/field_one.png");
+
+                // Create new player in the field
+                this.player = PlayerFactory.getNewPlayer(field);
+
+                // Draw player character
+                player.getPosition().show();
+
+               // textShow.setText("Your score: " + score);
+
+                state = true;
+            }
 
             setGame();
 
@@ -81,7 +91,7 @@ public class Game {
                 }
             }
 
-            textShow.setText("Your score: " + score);
+            // textShow.setText("Your score: " + score);
 
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies
@@ -144,19 +154,19 @@ public class Game {
 
     public void menu() {
 
-        new Field("resources/images/menus/menu.png");
+        Field field = new Field("resources/images/menus/menu.png");
 
     }
 
     public void instructions() {
 
-        new Field("resources/images/menus/instructions.png");
+        Field field = new Field("resources/images/menus/instructions.png");
 
     }
 
     public void credits() {
 
-        new Field("resources/images/menus/credits.png");
+        Field field = new Field("resources/images/menus/credits.png");
 
     }
 }

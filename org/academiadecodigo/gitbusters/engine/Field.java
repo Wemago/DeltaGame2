@@ -14,6 +14,11 @@ public class Field {
         field.draw();
     }
 
+    public Picture getField() {
+
+        return field;
+    }
+
     public int getWidth() {
         return field.getWidth();
     }

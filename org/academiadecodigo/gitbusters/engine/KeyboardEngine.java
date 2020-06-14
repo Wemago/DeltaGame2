@@ -15,23 +15,13 @@ public class KeyboardEngine implements KeyboardHandler {
     private Game game;
     private GameObject object;
 
-    public KeyboardEngine(Game game, GameObject object) {
+    public KeyboardEngine(Game game) {
 
 
         this.game = game;
-        this.object = object;
+        this.object = game.getPlayer();
 
         this.keyboard = new Keyboard(this);
-        setKeys();
-    }
-
-    public KeyboardEngine() {
-
-        this.keyboard = new Keyboard(this);
-        setKeys();
-    }
-
-    public void setKeys(){
 
         // Defining keys need for the game
         this.createKeyboardEvent(KeyboardEvent.KEY_UP);
@@ -46,7 +36,6 @@ public class KeyboardEngine implements KeyboardHandler {
         this.createKeyboardEvent(KeyboardEvent.KEY_E);
         this.createKeyboardEvent(KeyboardEvent.KEY_B);
         this.createKeyboardEvent(KeyboardEvent.KEY_S);
-
     }
 
     private void createKeyboardEvent(int key) {
