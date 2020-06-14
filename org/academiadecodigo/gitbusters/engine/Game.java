@@ -21,7 +21,7 @@ public class Game {
 
         // Set game delay
         // This is related to game loop rounds
-        this.delay = 1;
+        this.delay = 3;
 
         // Load our game field
         this.field = new Field("resources/images/fields/field_one.png");
