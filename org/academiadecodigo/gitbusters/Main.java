@@ -6,12 +6,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+
         try {
 
             Game g = new Game();
 
-            g.init();
-            g.start();
+            g.menu();
 
         } catch ( Exception error ) {
             System.out.println( error );

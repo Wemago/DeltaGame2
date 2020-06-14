@@ -17,10 +17,21 @@ public class KeyboardEngine implements KeyboardHandler {
 
     public KeyboardEngine(Game game, GameObject object) {
 
+
         this.game = game;
         this.object = object;
 
         this.keyboard = new Keyboard(this);
+        setKeys();
+    }
+
+    public KeyboardEngine() {
+
+        this.keyboard = new Keyboard(this);
+        setKeys();
+    }
+
+    public void setKeys(){
 
         // Defining keys need for the game
         this.createKeyboardEvent(KeyboardEvent.KEY_UP);
@@ -30,6 +41,12 @@ public class KeyboardEngine implements KeyboardHandler {
         this.createKeyboardEvent(KeyboardEvent.KEY_A);
         this.createKeyboardEvent(KeyboardEvent.KEY_Z);
         this.createKeyboardEvent(KeyboardEvent.KEY_SPACE);
+        this.createKeyboardEvent(KeyboardEvent.KEY_I);
+        this.createKeyboardEvent(KeyboardEvent.KEY_C);
+        this.createKeyboardEvent(KeyboardEvent.KEY_E);
+        this.createKeyboardEvent(KeyboardEvent.KEY_B);
+        this.createKeyboardEvent(KeyboardEvent.KEY_S);
+
     }
 
     private void createKeyboardEvent(int key) {
@@ -92,10 +109,34 @@ public class KeyboardEngine implements KeyboardHandler {
                 }
                 // FIRE
                 break;
+            case KeyboardEvent.KEY_I:
+                // Instructions
+                game.instructions();
+                break;
+            case KeyboardEvent.KEY_C:
+                // Credits
+                game.credits();
+                break;
+            case KeyboardEvent.KEY_E:
+                // Exit
+                System.exit(0);
+                break;
+            case KeyboardEvent.KEY_B:
+                // Game Menu
+                game.menu();
+                break;
+            case KeyboardEvent.KEY_S:
+                try {
+                    game.start();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
                 throw new IllegalStateException("Something went terribly wrong with the keyboard.");
         }
     }
 
-    public void keyReleased(KeyboardEvent keyboardEvent) { }
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+    }
 }

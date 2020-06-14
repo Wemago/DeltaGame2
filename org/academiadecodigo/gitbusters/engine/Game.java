@@ -25,50 +25,53 @@ public class Game {
         // This is related to game loop rounds
         this.delay = 3;
 
-        // Load our game field
-        this.field = new Field("resources/images/fields/field_one.png");
 
         // Initiate enemies container
         this.enemies = new ArrayList<>();
+
+        // Initiate Keyboard
+        new KeyboardEngine();
     }
 
-    public void init() {
+
+    public void start() throws InterruptedException {
+
+        int creationTimer = 0;
+        int moveTimer = 0;
+        int score = 0;
+
+        // Load our game field
+        this.field = new Field("resources/images/fields/field_one.png");
+
         // Create new player in the field
-         this.player = PlayerFactory.getNewPlayer(field);
+        this.player = PlayerFactory.getNewPlayer(field);
 
         // Draw player character
         player.getPosition().show();
 
         // Initiate listeners for keyboard press
         new KeyboardEngine(this, player);
-    }
 
-    public void start() throws InterruptedException  {
-
-        int creationTimer = 0;
-        int moveTimer = 0;
-        int score = 0;
-
-        String textScore = "Your Score: "+score;
-        Text textShow = new Text((Math.round(field.getWidth()/2)), Field.PADDING*3, textScore);
-        textShow.grow(Field.PADDING*6, Field.PADDING*2);
+        String textScore = "Your Score: " + score;
+        Text textShow = new Text((Math.round(field.getWidth() / 2)), Field.PADDING * 3, textScore);
+        textShow.grow(Field.PADDING * 6, Field.PADDING * 2);
         textShow.setColor(Color.WHITE);
         textShow.draw();
 
         // Goes on until enemy gets to the last column
-        while(!endGame) {
+        while (!endGame) {
 
             setGame();
 
             ArrayList<Weapon> weapons = player.getWeapons();
 
-            for(Weapon weapon : new ArrayList<>(weapons)) {
+            for (Weapon weapon : new ArrayList<>(weapons)) {
 
                 weapon.move(field);
 
-                for(Enemy enemy : new ArrayList<>(enemies)) {
+                for (Enemy enemy : new ArrayList<>(enemies)) {
 
-                    if(enemy.getPosition().compare(weapon.getPosition())) {
+                    if (enemy.getPosition().compare(weapon.getPosition())) {
                         enemy.getPosition().hide();
                         enemies.remove(enemy);
                         weapon.getPosition().hide();
@@ -78,11 +81,11 @@ public class Game {
                 }
             }
 
-            textShow.setText("Your score: "+score);
+            textShow.setText("Your score: " + score);
 
             // Create an enemy and add to the enemies container
             // counter that works as a timer to control the creating of enemies
-            if(creationTimer == 350) {
+            if (creationTimer == 350) {
                 // Create new enemy at field
                 Enemy enemy = EnemyFactory.getNewEnemy(field);
                 // Draw enemy in its position
@@ -98,7 +101,7 @@ public class Game {
 
             // Move all enemies objects
             // Counter that works like a timer to control the enemy movement
-            if(moveTimer > 10) {
+            if (moveTimer > 10) {
                 for (Enemy enemy : enemies) {
                     // Move enemy in lane with its specific velocity
                     enemy.getPosition().moveLeft(enemy.getSpeed());
@@ -110,26 +113,26 @@ public class Game {
         //POR A IMAGEM GAME OVER!!!!!!!!!!!!!!!
     }
 
-    public boolean gomeOver(){
+    public boolean gomeOver() {
         return false;
     }
 
-    public Field getField(){
+    public Field getField() {
         return field;
     }
 
-    public void setGame(){
+    public void setGame() {
 
         //enemies.iterator();
-        for(Enemy enemy : enemies) {
+        for (Enemy enemy : enemies) {
 
             //if enemy reaches edge
-            if(enemy.atEdge()) {
+            if (enemy.atEdge()) {
                 this.endGame = true;
             }
 
             //if enemy touch player
-            if(enemy.getPosition().compare(player.getPosition())) {
+            if (enemy.getPosition().compare(player.getPosition())) {
                 this.endGame = true;
             }
         }
@@ -137,5 +140,23 @@ public class Game {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void menu() {
+
+        new Field("resources/images/menus/menu.png");
+
+    }
+
+    public void instructions() {
+
+        new Field("resources/images/menus/instructions.png");
+
+    }
+
+    public void credits() {
+
+        new Field("resources/images/menus/credits.png");
+
     }
 }
