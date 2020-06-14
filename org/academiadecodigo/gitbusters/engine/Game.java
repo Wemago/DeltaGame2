@@ -34,7 +34,7 @@ public class Game {
 
     public void init() {
         // Create new player in the field
-         this.player = PlayerFactory.getNewPlayer(field);
+        this.player = PlayerFactory.getNewPlayer(field);
 
         // Draw player character
         player.getPosition().show();
