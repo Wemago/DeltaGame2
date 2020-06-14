@@ -14,6 +14,10 @@ public class Field {
         field.draw();
     }
 
+    public Picture getField() {
+        return field;
+    }
+
     public int getWidth() {
         return field.getWidth();
     }
@@ -37,7 +41,6 @@ public class Field {
     public int getMaxY() {
         return field.getMaxY();
     }
-
 
     public boolean isEdge() {
         return (getX() == 0 || getX() == (getHeight() - 1)) || (getY() == 0 || getY() == (getWidth() - 1));

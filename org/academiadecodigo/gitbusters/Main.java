@@ -9,9 +9,14 @@ public class Main {
         try {
 
             Game g = new Game();
-
             g.init();
-            g.start();
+
+            while( !g.getExit() ) {
+                if( g.getEndGame() ) {
+                    g = new Game();
+                    g.init();
+                }
+            }
 
         } catch ( Exception error ) {
             System.out.println( error );

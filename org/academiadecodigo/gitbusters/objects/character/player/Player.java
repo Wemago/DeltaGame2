@@ -3,19 +3,27 @@ package org.academiadecodigo.gitbusters.objects.character.player;
 import org.academiadecodigo.gitbusters.engine.Direction;
 import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
+import org.academiadecodigo.gitbusters.engine.Sound;
 import org.academiadecodigo.gitbusters.objects.Moveable;
 import org.academiadecodigo.gitbusters.objects.character.Character;
 import org.academiadecodigo.gitbusters.objects.weapons.Minigun;
 import org.academiadecodigo.gitbusters.objects.weapons.Weapon;
 
+import java.util.ArrayList;
+
 public class Player extends Character implements Moveable {
 
     private PlayerType type;
-    private Weapon weapon;
+    //private Weapon weapon;
     private Position position;
     private Direction currentDirection;
     private Field field;
 
+<<<<<<< HEAD
+=======
+    private ArrayList<Weapon> weapons;
+
+>>>>>>> 3aa68310be063ce202b8ad56033b058d2625b878
     private int speed;
     private int maxSpeed;
 
@@ -25,20 +33,32 @@ public class Player extends Character implements Moveable {
         this.speed = speed;
         this.maxSpeed = speed;
         this.currentDirection = Direction.RIGHT;
+<<<<<<< HEAD
         this.weapon = new Minigun(position,getCurrentDirection(),field);
+=======
+
+        this.weapons = new ArrayList<>();
+
+>>>>>>> 3aa68310be063ce202b8ad56033b058d2625b878
         this.field = field;
     }
 
-    public void createWeapon(){
-        this.weapon = new Minigun(position,getCurrentDirection(),field);
+    public void shoot(){
+        Minigun minigun = new Minigun(position,getCurrentDirection(),field);
+        minigun.getPosition().show();
+        weapons.add(minigun);
+
+        Sound shoot = new Sound("resources/sounds/sfx_shoot.wav");
+        shoot.play(true);
     }
 
-    public Weapon getWeapon(){
-        return this.weapon;
-    }
-    public void move() {
+    public static void removeWeapon() { }
 
+    public ArrayList<Weapon> getWeapons(){
+        return this.weapons;
     }
+
+    public void move() { }
 
     public void setCurrentDirection(Direction currentDirection) {
         this.currentDirection = currentDirection;
@@ -47,39 +67,10 @@ public class Player extends Character implements Moveable {
         return currentDirection;
     }
 
-    public void accelerate(Direction direction, int speed) {
-
-        //GridDirection newDirection = direction;
-
-        //turns back if bumped against wall
-        //if (isHittingWall()) {
-        //    return;
-        //}
-
-        //accelerate in the chosen direction
-        //this.currentDirection = newDirection;
-        //for (int i = 0; i < speed; i++) {
-            //getPos().moveInDirection(newDirection, 1);
-        //    break;
-        //}
-    }
+    public void accelerate(Direction direction, int speed) { }
 
         /*
-    public boolean isHittingWall() {
-        switch (currentDirection) {
-            case UP:
-                if (getPos().getRow() == 0) {
-                    return true;
-                }
-                break;
-            case DOWN:
-                if (getPos().getRow() == getGrid().getRows() - 1) {
-                    return true;
-                }
-        }
-
-        return false;
-    }
+    public boolean isHittingWall() { }
          */
 
     public Position getPosition() {

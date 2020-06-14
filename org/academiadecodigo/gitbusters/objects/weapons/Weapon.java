@@ -19,11 +19,14 @@ public abstract class Weapon extends GameObject implements Moveable {
 
     //private int bulletDamage;
 
-
     public Weapon(Position pos, Direction direction, int speed, String path, Field field) {
 
         this.position = new Position(pos.getX(),pos.getY(),field,path);
         this.direction = direction;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aa68310be063ce202b8ad56033b058d2625b878
         this.speed = speed;
     }
 
@@ -68,33 +71,28 @@ public abstract class Weapon extends GameObject implements Moveable {
     }
 
     public void move(Field field) {
-        System.out.println("direction");
         switch (this.direction) {
             case UP:
                 position.moveUp(speed);
                 if(this.position.getY() == field.getY()) {
-                    this.setFired(false);
                     position.hide();
                 }
                 break;
             case DOWN:
                 position.moveDown(speed);
                 if(this.position.getMaxY() == field.getMaxY()) {
-                    this.setFired(false);
                     position.hide();
                 }
                 break;
             case LEFT:
                 position.moveLeft(speed);
                 if(this.position.getX() == field.getX()) {
-                    this.setFired(false);
                     position.hide();
                 }
                 break;
             case RIGHT:
                 position.moveRight(speed);
                 if(this.position.getMaxX() == field.getMaxX()) {
-                    this.setFired(false);
                     position.hide();
                 }
                 break;

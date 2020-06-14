@@ -25,7 +25,7 @@ public class Enemy extends Character implements Moveable, Destroyable {
     @Override
     public void hit() {
         destroyed = true;
-        getPosition().hide();
+        //getPosition().hide();
     }
 
     @Override
