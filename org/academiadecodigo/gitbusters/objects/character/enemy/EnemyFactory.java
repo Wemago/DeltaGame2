@@ -63,7 +63,7 @@ public class EnemyFactory {
                                 lanes[Utils.getRandom(5)],
                                 field,
                                 "resources/images/characters/enemies/miguel.png"),
-                        4
+                        3
                 );
                 break;
             default:

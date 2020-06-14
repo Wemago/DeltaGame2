@@ -13,10 +13,10 @@ public class KeyboardEngine implements KeyboardHandler {
     private Game game;
     private GameObject object;
 
-    public KeyboardEngine(Game game, GameObject object) {
+    public KeyboardEngine(Game game) {
 
         this.game = game;
-        this.object = object;
+        this.object = game.getPlayer();
 
         this.keyboard = new Keyboard(this);
 
@@ -28,6 +28,11 @@ public class KeyboardEngine implements KeyboardHandler {
         this.createKeyboardEvent(KeyboardEvent.KEY_A);
         this.createKeyboardEvent(KeyboardEvent.KEY_Z);
         this.createKeyboardEvent(KeyboardEvent.KEY_SPACE);
+        this.createKeyboardEvent(KeyboardEvent.KEY_I);
+        this.createKeyboardEvent(KeyboardEvent.KEY_C);
+        this.createKeyboardEvent(KeyboardEvent.KEY_E);
+        this.createKeyboardEvent(KeyboardEvent.KEY_B);
+        this.createKeyboardEvent(KeyboardEvent.KEY_S);
     }
 
     private void createKeyboardEvent(int key) {
@@ -90,10 +95,32 @@ public class KeyboardEngine implements KeyboardHandler {
                 }
                 // FIRE
                 break;
+            case KeyboardEvent.KEY_I:
+                // Instructions
+                game.setMenu(2);
+                break;
+            case KeyboardEvent.KEY_C:
+                // Credits
+                game.setMenu(3);
+                break;
+            case KeyboardEvent.KEY_E:
+                // Exit
+                game.setExit();
+                System.exit(0);
+                break;
+            case KeyboardEvent.KEY_B:
+                // Game Menu
+                game.setMenu(1);
+                break;
+            case KeyboardEvent.KEY_S:
+                // Start Game screen
+                game.setMenu(4);
+                break;
             default:
                 throw new IllegalStateException("Something went terribly wrong with the keyboard.");
         }
     }
 
-    public void keyReleased(KeyboardEvent keyboardEvent) { }
+    public void keyReleased(KeyboardEvent keyboardEvent) {
+    }
 }
