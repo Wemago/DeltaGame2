@@ -1,6 +1,7 @@
 package org.academiadecodigo.gitbusters.objects.character.enemy;
 
 import org.academiadecodigo.gitbusters.engine.Direction;
+import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.Destroyable;
 import org.academiadecodigo.gitbusters.objects.Moveable;
@@ -11,7 +12,6 @@ public class Enemy extends Character implements Moveable, Destroyable {
     private EnemyType type;
     private Position position;
     private Direction currentDirection;
-
     private boolean destroyed = false;
 
     private int speed ;
@@ -25,6 +25,7 @@ public class Enemy extends Character implements Moveable, Destroyable {
     @Override
     public void hit() {
         destroyed = true;
+        //getPosition().hide();
     }
 
     @Override
@@ -59,6 +60,9 @@ public class Enemy extends Character implements Moveable, Destroyable {
 
     @Override
     public boolean atEdge() {
+        if(this.position.getX() == Field.PADDING) {
+            return true;
+        }
         return false;
     }
 }
