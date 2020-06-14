@@ -14,6 +14,7 @@ How to represent<br />
 3. Extra Feature - Add limit to player max speed base by level - DeltaTeam
 4. Extra Feature - Player max speed bonus for over limit speed - DeltaTeam
 5. Score Board - Implement score board for player - DeltaTeam
+6. Sounds - Music for game - DeltaTeam
  
 == DOING
 1. Menu - Programming and Menu - Ricardo, Tiago
