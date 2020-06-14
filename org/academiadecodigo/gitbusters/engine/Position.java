@@ -41,10 +41,10 @@ public class Position {
     }
 
     public boolean compare(Position position) {
-        return (this.getMaxX()) > (position.getX()) &&
-                (this.getX()) < (position.getMaxX()) &&
-                (this.getMaxY()) > (position.getY()) &&
-                (this.getY()) < (position.getMaxY());
+        return (this.getMaxX()-Field.PADDING) > (position.getX()) &&
+                (this.getX()) < (position.getMaxX()-Field.PADDING) &&
+                (this.getMaxY()-Field.PADDING) > (position.getY()) &&
+                (this.getY()) < (position.getMaxY()-Field.PADDING);
     }
 
     public void moveUp(int distance) {
