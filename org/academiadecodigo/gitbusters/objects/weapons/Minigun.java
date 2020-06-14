@@ -21,7 +21,6 @@ public class Minigun extends Weapon {
 
     @Override
     public boolean atEdge() {
-
         return false;
     }
 

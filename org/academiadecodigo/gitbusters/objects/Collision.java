@@ -1,9 +1,7 @@
 package org.academiadecodigo.gitbusters.objects;
 
-import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 import org.academiadecodigo.gitbusters.objects.character.player.Player;
-import org.academiadecodigo.gitbusters.objects.weapons.Weapon;
 
 public class Collision {
 

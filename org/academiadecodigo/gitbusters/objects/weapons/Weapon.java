@@ -5,7 +5,6 @@ import org.academiadecodigo.gitbusters.engine.Field;
 import org.academiadecodigo.gitbusters.engine.Position;
 import org.academiadecodigo.gitbusters.objects.GameObject;
 import org.academiadecodigo.gitbusters.objects.Moveable;
-import org.academiadecodigo.gitbusters.engine.Direction;
 import org.academiadecodigo.gitbusters.objects.character.enemy.Enemy;
 
 import java.util.ArrayList;
@@ -24,9 +23,7 @@ public abstract class Weapon extends GameObject implements Moveable {
     public Weapon(Position pos, Direction direction, int speed, String path, Field field) {
 
         this.position = new Position(pos.getX(),pos.getY(),field,path);
-
         this.direction = direction;
-        System.out.println(this.direction);
         this.speed = speed;
     }
 
@@ -42,13 +39,11 @@ public abstract class Weapon extends GameObject implements Moveable {
         if (fired){
             this.position.show();
         }
-
     }
 
     public boolean isFired() {
         return fired;
     }
-
 
     public Direction getDirection() {
         return direction;
@@ -134,10 +129,7 @@ public abstract class Weapon extends GameObject implements Moveable {
     @Override
     public void decreaseSpeed() {}
 
-    public boolean atEdge(Field field) {
-        if(field.isEdge()) {
-            return true;
-        }
+    public boolean atEdge() {
         return false;
     }
 

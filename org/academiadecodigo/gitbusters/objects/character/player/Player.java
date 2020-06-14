@@ -16,7 +16,6 @@ public class Player extends Character implements Moveable {
     private Direction currentDirection;
     private Field field;
 
-
     private int speed;
     private int maxSpeed;
 
@@ -27,9 +26,6 @@ public class Player extends Character implements Moveable {
         this.maxSpeed = speed;
         this.currentDirection = Direction.RIGHT;
         this.weapon = new Minigun(position,getCurrentDirection(),field);
-
-
-
         this.field = field;
     }
 

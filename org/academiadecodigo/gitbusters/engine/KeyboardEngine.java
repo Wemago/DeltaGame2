@@ -90,14 +90,12 @@ public class KeyboardEngine implements KeyboardHandler {
 
                 break;
             case KeyboardEvent.KEY_SPACE:
-                // Launch something?
-
+                // Shoot
                 if (object instanceof Player) {
                     ((Player) object).createWeapon();
                     ((Player) object).getWeapon().setFired(true);
 
                 }
-                // FIRE
                 break;
             default:
                 throw new IllegalStateException("Something went terribly wrong with the keyboard.");
